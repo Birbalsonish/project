@@ -1,0 +1,73 @@
+<home></home>
+
+<form [formGroup]="reactiveform" (ngSubmit)="onSubmit()" class="row g-3 needs-validation">
+    <div class="col-md-4">
+      <label for="validationCustom01" class="form-label">First name</label>
+      <input type="text" class="form-control" id="validationCustom01" formControlName="firstname">
+      <!-- Validation message for firstname -->
+      <div *ngIf="reactiveform.get('firstname')?.invalid && (reactiveform.get('firstname')?.touched || reactiveform.get('firstname')?.dirty)">
+        <span *ngIf="reactiveform.get('firstname')?.errors?.['required']">This field is required.</span>
+      </div>
+    </div>
+  
+    <div class="col-md-4">
+      <label for="validationCustom02" class="form-label">Last name</label>
+      <input type="text" class="form-control" formControlName="lastname">
+      <!-- Validation message for lastname -->
+      <div *ngIf="reactiveform.get('lastname')?.invalid && (reactiveform.get('lastname')?.touched || reactiveform.get('lastname')?.dirty)">
+        <span *ngIf="reactiveform.get('lastname')?.errors?.['required']">This field is required.</span>
+        <span *ngIf="reactiveform.get('lastname')?.errors?.['minlength']">Last name must be at least 4 characters long.</span>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="validationCustomUsername" class="form-label">Email</label>
+      <div class="input-group has-validation">
+        <span class="input-group-text" id="inputGroupPrepend">&#64;</span>
+        <input type="text" class="form-control" formControlName="email">
+        <div *ngIf="reactiveform.get('email')?.invalid && (reactiveform.get('email')?.touched || reactiveform.get('email')?.dirty)">
+          <span *ngIf="reactiveform.get('email')?.errors?.['required']">This field is required.</span>
+          <span *ngIf="reactiveform.get('email')?.errors?.['email']">Email required.</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="validationCustom03" class="form-label">City</label>
+      <input type="text" class="form-control" formControlName="city">
+      <div class="invalid-feedback">
+        Please provide a valid city.
+      </div>
+    </div>
+    <div class="col-md-3">
+      <label for="validationCustom04" class="form-label">State</label>
+      <select class="form-select" formControlName="state">
+        <option  value="">state1</option>
+        <option  value="">state2</option>
+        <option   value="">state3</option>
+        <option  value="">state4</option>
+        <option  value="">state5</option>
+        <option  value="">state6</option>
+        <option  value="">state7</option>
+      </select>
+      <div class="invalid-feedback">
+        Please select a valid state.
+      </div>
+    </div>
+    <div class="col-md-3">
+      <label for="validationCustom05" class="form-label">Zip</label>
+      <input type="text" class="form-control" formControlName="zipcode">
+      <div class="invalid-feedback">
+        Please provide a valid zip.
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+        <label class="form-check-label">
+          Agree to terms and conditions
+        </label>
+        <div class="invalid-feedback"  formControlName="isagree">
+          You must agree before submitting.
+        </div>
+      </div>
+      <button type="submit" class="submit">submit</button>
+    </div>

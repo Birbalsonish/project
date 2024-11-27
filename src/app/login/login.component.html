@@ -1,0 +1,29 @@
+<div class="login-container">
+  <h2>{{ isSignUpMode ? 'Sign Up' : 'Log In' }}</h2>
+  <form #form="ngForm" (ngSubmit)="onformsumbited(form)">
+    <input
+      type="email"
+      name="email"
+      placeholder="Email"
+      required
+      ngModel
+    />
+    <input
+      type="password"
+      name="password"
+      placeholder="Password"
+      required
+      ngModel
+    />
+    <button type="submit">{{ isSignUpMode ? 'Sign Up' : 'Log In' }}</button>
+  </form>
+  <div class="signup-link">
+    {{ isSignUpMode ? "Already have an account?" : "Don't have an account?" }}
+    <a href="#" (click)="toggleMode($event)">
+      {{ isSignUpMode ? 'Log In' : 'Sign Up' }}
+    </a>
+  </div>
+</div>
+
+
+
